@@ -16,12 +16,13 @@ namespace Lab2
             {
                 double length = errorHandling("Length");
                 double width = errorHandling("Width");
+                double height = errorHandling("Height");
                 Console.WriteLine("Area:" + (width * length).ToString());
                 Console.WriteLine("Perimeter:" + ((width + length) * 2).ToString());
+                Console.WriteLine("Volume:" + (width * length * height).ToString());
                 Console.WriteLine("");
                 Console.Write("Continue?(y/n):");
-                char response = Console.ReadKey().KeyChar;
-                if (response == 'n')
+                if (Char.ToLower(Console.ReadKey().KeyChar) == 'n')
                 {
                     break;
                 }
