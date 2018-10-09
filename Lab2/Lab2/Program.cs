@@ -28,8 +28,6 @@ namespace Lab2
                 Console.WriteLine("");
                 Console.WriteLine("");
             }
-
-            // Go to http://aka.ms/dotnet-get-started-console to continue learning how to build a console app! 
         }
 
         static double errorHandling(string entry)
@@ -45,7 +43,7 @@ namespace Lab2
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine(e);
+                    Console.WriteLine(e.Message);
                     continue;
                 }
             }

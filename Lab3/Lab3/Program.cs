@@ -10,8 +10,12 @@ namespace Lab3
     {
         static void Main(string[] args)
         {
-            Console.Write("Enter an integer between 1 and 100:");
-            int entry = int.Parse(Console.ReadLine());
+            int entry = 1;
+            while (entry >= 1 && entry <= 100)
+            {
+                Console.Write("Enter an integer between 1 and 100:");
+                entry = int.Parse(Console.ReadLine());
+            }
             if (entry % 2 == 1)
             {
                 Console.WriteLine(entry + " Odd");
