@@ -11,16 +11,16 @@ namespace Lab3
         static void Main(string[] args)
         {
             Console.Write("What is your name? ");
-            string name = Console.ReadLine();
+            var name = Console.ReadLine();
             while (true)
             {
-                bool res = false;
-                int entry = 0;
+                var isInt = false;
+                var entry = 0;
                 Console.WriteLine("");
-                while (entry < 1 || entry > 100 || !res)
+                while (entry < 1 || entry > 100 || !isInt)
                 {
                     Console.Write("Enter an integer between 1 and 100: ");
-                    res = int.TryParse(Console.ReadLine(), out entry);
+                    isInt = int.TryParse(Console.ReadLine(), out entry);
                 }
                 Console.Write("For you, " + name + ": ");
                 if (entry % 2 == 1)
@@ -45,6 +45,9 @@ namespace Lab3
                     break;
                 }
             }
+            Console.WriteLine("");
+            Console.Write("Well, " + name + ", it's been positively real all the way to 100!");
+            Console.ReadKey();
         }
     }
 }
