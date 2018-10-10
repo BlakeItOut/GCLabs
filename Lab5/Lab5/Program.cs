@@ -30,13 +30,7 @@ namespace Lab5
 
         static long calculateFactorial(long x)
         {
-            if (x == 1)
-            {
-                return x;
-            } else
-            {
-                return x*calculateFactorial(x - 1);
-            }
+            return x == 1 ? x : x*calculateFactorial(x - 1);
         }
     }
 }
