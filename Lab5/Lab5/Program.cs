@@ -16,7 +16,7 @@ namespace Lab5
 
             while (!validInt || goOn != 'n')
             {
-                Console.Write("Enter an integer between 1 and 20:");
+                Console.Write("Enter an integer that's greater than 0 but less than 21:");
                 validInt = long.TryParse(Console.ReadLine(), out userInput);
                 if (validInt && userInput >= 1 && userInput <= 20)
                 {
