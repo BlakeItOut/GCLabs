@@ -16,12 +16,12 @@ namespace Lab5
 
             while (!validInt || goOn != 'n')
             {
-                Console.Write("Enter an integer between 1 and 25:");
+                Console.Write("Enter an integer between 1 and 20:");
                 validInt = long.TryParse(Console.ReadLine(), out userInput);
-                if (validInt && userInput >= 1 && userInput <= 25)
+                if (validInt && userInput >= 1 && userInput <= 20)
                 {
-                    Console.WriteLine(calculateFactorial(userInput));
-                    Console.Write("Would you like to continue?");
+                    Console.WriteLine("The factorial of " + userInput + " is " + calculateFactorial(userInput) + ".");
+                    Console.Write("Would you like to continue? (y/n)");
                     goOn = Char.ToLower(Console.ReadKey().KeyChar);
                     Console.WriteLine("");
                 }
