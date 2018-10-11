@@ -60,12 +60,22 @@ namespace Capstone1
                 {
                     //checks if the word is in title case
                     bool titleCase = Regex.IsMatch(word, @"([A-Z][^A-Z])\w+");
-                    char punctuation = ' ';
+                    string punctuation = " ";
                     //check if there is punctuation, if so, chop it off and store for later
                     if (Regex.IsMatch(word[word.Length - 1].ToString(), @"[,;.!?]"))
                     {
-                        punctuation = word[word.Length - 1];
-                        word = word.Substring(0, word.Length - 1);
+                        int firstPunctuation = word.Length - 1;
+                        //go back to where the punctuation starts
+                        for (int i = word.Length; i > 0; i--)
+                        {
+                            if (!Regex.IsMatch(word[i-1].ToString(), @"[,;.!?]"))
+                            {
+                                firstPunctuation = i;
+                                break;
+                            }
+                        }
+                        punctuation = word.Substring(firstPunctuation);
+                        word = word.Substring(0, firstPunctuation);
                     }
                     //if starts with vowel add way to end else move all consonants before first vowel to the end then add ay to the end of the word.
                     if (Regex.IsMatch(word[0].ToString(), @"[aeiouAEIOU]"))
@@ -91,7 +101,7 @@ namespace Capstone1
                         word = textInfo.ToTitleCase(word);
                     }
                     //if there was punchtuation put it back
-                    if (punctuation != ' ')
+                    if (punctuation != " ")
                     {
                         word += punctuation;
                     }
