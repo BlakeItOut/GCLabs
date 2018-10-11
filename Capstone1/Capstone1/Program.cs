@@ -19,10 +19,23 @@ namespace Capstone1
             {
                 Console.WriteLine("");
                 startText();
+                Another:
                 Console.WriteLine("");
                 Console.Write("Translate another line? (y/n) ");
-                if (Char.ToLower(Console.ReadKey().KeyChar) == 'n') break;
-                Console.WriteLine("");
+                Char response = Char.ToLower(Console.ReadKey().KeyChar);
+                if (response == 'n')
+                {
+                    break;
+                } else if (response == 'y')
+                {
+                    Console.WriteLine("");
+                    continue;
+                } else
+                {
+                    Console.WriteLine("");
+                    Console.WriteLine("Response is invalid. Please respond with either y or n.");
+                    goto Another;
+                }
             }
             Console.WriteLine("");
             Console.WriteLine("");
