@@ -52,10 +52,11 @@ namespace Capstone1
                 userInput = Console.ReadLine();
             }
             Console.WriteLine("");
-            Console.WriteLine(translate(userInput));
+            Console.WriteLine(translate(userInput, false));
+            saySomething(translate(userInput, true));
         }
 
-        static string translate(string input)
+        static string translate(string input, bool speaking)
         {
             //initialize to use ToTitleCase
             TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
@@ -93,7 +94,8 @@ namespace Capstone1
                     //if starts with vowel add way to end else move all consonants before first vowel to the end then add ay to the end of the word.
                     if (Regex.IsMatch(word[0].ToString(), @"[aeiouAEIOU]"))
                     {
-                        word += "way";
+                        // say way by itself if speaking
+                        word += speaking ? " way" : "way";
                     }
                     else
                     {
@@ -106,7 +108,21 @@ namespace Capstone1
                                 break;
                             }
                         }
-                        word = word.Substring(firstVowel) + word.Substring(0, firstVowel) + "ay";
+                        //provide phonetic pronunciation for words with double vowels
+                        if (speaking && Regex.IsMatch(word.Substring(firstVowel), @"^\w[aeiouyAEIOUY]"))
+                        {
+                            word = word[firstVowel] + " " + word.Substring(firstVowel + 1).Remove(0, 1) + word.Substring(0, firstVowel) + "ay";
+                        }
+                        //provide phonetic pronunciation for words with vowel consonant vowel patterns
+                        else if (speaking && Regex.IsMatch(word.Substring(firstVowel), @"^\w\w[aeiouyAEIOUY]"))
+                        {
+                            word = word[firstVowel] + " " + word.Substring(firstVowel + 1).Remove(1, 1) + word.Substring(0, firstVowel) + "ay";
+                        }
+                        //translate for words that start with consonants based on first vowel position
+                        else
+                        {
+                            word = word.Substring(firstVowel) + word.Substring(0, firstVowel) + "ay";
+                        }
                     }
                     //if the input is title case make sure the output is too
                     if (titleCase)
@@ -162,8 +178,8 @@ namespace Capstone1
         static void displayResults(object sender, SpeechRecognizedEventArgs e)
         {
             Console.WriteLine("Recognized text: " + e.Result.Text);
-            Console.WriteLine("Translated text: " + translate(e.Result.Text));
-            saySomething(translate(e.Result.Text));
+            Console.WriteLine("Translated text: " + translate(e.Result.Text, false));
+            saySomething(translate(e.Result.Text, true));
             Console.WriteLine("");
         }
 
