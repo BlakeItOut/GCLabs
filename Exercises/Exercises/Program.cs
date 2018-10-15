@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,10 +11,22 @@ namespace Exercises
     {
         static void Main(string[] args)
         {
-            while(true)
+            while (true)
             {
+                Exercises obj = new Exercises();
                 Console.Write("What exercise # would you like to go to? ");
                 int response = int.Parse(Console.ReadLine());
+                if(response > 0)
+                {
+                    MethodInfo method = obj.GetType().GetMethod($"Exercise{response}", BindingFlags.Public | BindingFlags.Instance);
+                    method.Invoke(obj, null);
+                }
+                else
+                {
+                    MethodInfo method = obj.GetType().GetMethod($"ExerciseB{response*-1}", BindingFlags.Public | BindingFlags.Instance);
+                    method.Invoke(obj, null);
+                }
+                /*
                 switch (response)
                 {
                     case -22:
@@ -322,410 +335,418 @@ namespace Exercises
                     default:
                         break;
                 }
+                */
             }
         }
-        
-        static void ExerciseB22()
+    }
+
+    public class Exercises
+    {
+        public Exercises()
         {
 
         }
-        static void ExerciseB21()
+        public void ExerciseB22()
         {
 
         }
-        static void ExerciseB20()
+        public void ExerciseB21()
         {
 
         }
-        static void ExerciseB19()
+        public void ExerciseB20()
         {
 
         }
-        static void ExerciseB18()
+        public void ExerciseB19()
         {
 
         }
-        static void ExerciseB17()
+        public void ExerciseB18()
         {
 
         }
-        static void ExerciseB16()
+        public void ExerciseB17()
         {
 
         }
-        static void ExerciseB15()
+        public void ExerciseB16()
         {
 
         }
-        static void ExerciseB14()
+        public void ExerciseB15()
         {
 
         }
-        static void ExerciseB13()
+        public void ExerciseB14()
         {
 
         }
-        static void ExerciseB12()
+        public void ExerciseB13()
         {
 
         }
-        static void ExerciseB11()
+        public void ExerciseB12()
         {
 
         }
-        static void ExerciseB10()
+        public void ExerciseB11()
         {
 
         }
-        static void ExerciseB9()
+        public void ExerciseB10()
         {
 
         }
-        static void ExerciseB8()
+        public void ExerciseB9()
         {
 
         }
-        static void ExerciseB7()
+        public void ExerciseB8()
         {
 
         }
-        static void ExerciseB6()
+        public void ExerciseB7()
         {
 
         }
-        static void ExerciseB5()
+        public void ExerciseB6()
         {
 
         }
-        static void ExerciseB4()
+        public void ExerciseB5()
         {
 
         }
-        static void ExerciseB3()
+        public void ExerciseB4()
         {
 
         }
-        static void ExerciseB2()
+        public void ExerciseB3()
         {
 
         }
-        static void ExerciseB1()
+        public void ExerciseB2()
         {
 
         }
-        static void Exercise0()
+        public void ExerciseB1()
         {
 
         }
-        static void Exercise1()
+        public void Exercise0()
         {
 
         }
-        static void Exercise2()
+        public void Exercise1()
         {
-
+            Console.WriteLine("It works!");
         }
-        static void Exercise3()
+        public void Exercise2()
         {
-
+            Console.WriteLine("It really does!");
+        }
+        public void Exercise3()
+        {
+            Console.WriteLine("It really really does!");
         }
-        static void Exercise4()
+        public void Exercise4()
         {
 
         }
-        static void Exercise5()
+        public void Exercise5()
         {
 
         }
-        static void Exercise6()
+        public void Exercise6()
         {
 
         }
-        static void Exercise7()
+        public void Exercise7()
         {
 
         }
-        static void Exercise8()
+        public void Exercise8()
         {
 
         }
-        static void Exercise9()
+        public void Exercise9()
         {
 
         }
-        static void Exercise10()
+        public void Exercise10()
         {
 
         }
-        static void Exercise11()
+        public void Exercise11()
         {
 
         }
-        static void Exercise12()
+        public void Exercise12()
         {
 
         }
-        static void Exercise13()
+        public void Exercise13()
         {
 
         }
-        static void Exercise14()
+        public void Exercise14()
         {
 
         }
-        static void Exercise15()
+        public void Exercise15()
         {
 
         }
-        static void Exercise16()
+        public void Exercise16()
         {
 
         }
-        static void Exercise17()
+        public void Exercise17()
         {
 
         }
-        static void Exercise18()
+        public void Exercise18()
         {
 
         }
-        static void Exercise19()
+        public void Exercise19()
         {
 
         }
-        static void Exercise20()
+        public void Exercise20()
         {
 
         }
-        static void Exercise21()
+        public void Exercise21()
         {
 
         }
-        static void Exercise22()
+        public void Exercise22()
         {
 
         }
-        static void Exercise23()
+        public void Exercise23()
         {
 
         }
-        static void Exercise24()
+        public void Exercise24()
         {
 
         }
-        static void Exercise25()
+        public void Exercise25()
         {
 
         }
-        static void Exercise26()
+        public void Exercise26()
         {
 
         }
-        static void Exercise27()
+        public void Exercise27()
         {
 
         }
-        static void Exercise28()
+        public void Exercise28()
         {
 
         }
-        static void Exercise29()
+        public void Exercise29()
         {
 
         }
-        static void Exercise30()
+        public void Exercise30()
         {
 
         }
-        static void Exercise31()
+        public void Exercise31()
         {
 
         }
-        static void Exercise32()
+        public void Exercise32()
         {
 
         }
-        static void Exercise33()
+        public void Exercise33()
         {
 
         }
-        static void Exercise34()
+        public void Exercise34()
         {
 
         }
-        static void Exercise35()
+        public void Exercise35()
         {
 
         }
-        static void Exercise36()
+        public void Exercise36()
         {
 
         }
-        static void Exercise37()
+        public void Exercise37()
         {
 
         }
-        static void Exercise38()
+        public void Exercise38()
         {
 
         }
-        static void Exercise39()
+        public void Exercise39()
         {
 
         }
-        static void Exercise40()
+        public void Exercise40()
         {
 
         }
-        static void Exercise41()
+        public void Exercise41()
         {
 
         }
-        static void Exercise42()
+        public void Exercise42()
         {
 
         }
-        static void Exercise43()
+        public void Exercise43()
         {
 
         }
-        static void Exercise44()
+        public void Exercise44()
         {
 
         }
-        static void Exercise45()
+        public void Exercise45()
         {
 
         }
-        static void Exercise46()
+        public void Exercise46()
         {
 
         }
-        static void Exercise47()
+        public void Exercise47()
         {
 
         }
-        static void Exercise48()
+        public void Exercise48()
         {
 
         }
-        static void Exercise49()
+        public void Exercise49()
         {
 
         }
-        static void Exercise50()
+        public void Exercise50()
         {
 
         }
-        static void Exercise51()
+        public void Exercise51()
         {
 
         }
-        static void Exercise52()
+        public void Exercise52()
         {
 
         }
-        static void Exercise53()
+        public void Exercise53()
         {
 
         }
-        static void Exercise54()
+        public void Exercise54()
         {
 
         }
-        static void Exercise55()
+        public void Exercise55()
         {
 
         }
-        static void Exercise56()
+        public void Exercise56()
         {
 
         }
-        static void Exercise57()
+        public void Exercise57()
         {
 
         }
-        static void Exercise58()
+        public void Exercise58()
         {
 
         }
-        static void Exercise59()
+        public void Exercise59()
         {
 
         }
-        static void Exercise60()
+        public void Exercise60()
         {
 
         }
-        static void Exercise61()
+        public void Exercise61()
         {
 
         }
-        static void Exercise62()
+        public void Exercise62()
         {
 
         }
-        static void Exercise63()
+        public void Exercise63()
         {
 
         }
-        static void Exercise64()
+        public void Exercise64()
         {
 
         }
-        static void Exercise65()
+        public void Exercise65()
         {
 
         }
-        static void Exercise66()
+        public void Exercise66()
         {
 
         }
-        static void Exercise67()
+        public void Exercise67()
         {
 
         }
-        static void Exercise68()
+        public void Exercise68()
         {
 
         }
-        static void Exercise69()
+        public void Exercise69()
         {
 
         }
-        static void Exercise70()
+        public void Exercise70()
         {
 
         }
-        static void Exercise71()
+        public void Exercise71()
         {
 
         }
-        static void Exercise72()
+        public void Exercise72()
         {
 
         }
-        static void Exercise73()
+        public void Exercise73()
         {
 
         }
-        static void Exercise74()
+        public void Exercise74()
         {
 
         }
-        static void Exercise75()
+        public void Exercise75()
         {
 
         }
-        static void Exercise76()
+        public void Exercise76()
         {
 
         }
-        static void Exercise77()
+        public void Exercise77()
         {
 
         }
-        static void Exercise78()
+        public void Exercise78()
         {
 
         }
