@@ -10,7 +10,7 @@ namespace Lab8
     {
         static void Main(string[] args)
         {
-            Console.Write("Welcome to our C# class. Which student would you like to learn more about? (enter a number 1-20): ");
+            Console.Write("Welcome to our C# class. Which student would you like to learn more about? (enter a number 1-15): ");
             while (true)
             {
                 try
@@ -44,23 +44,29 @@ namespace Lab8
                     }
                     else if (knowMore == "yes")
                     {
-                        Console.Write("Which other student would you like to learn more about? (enter a number 1-20): ");
+                        Console.Write("Which other student would you like to learn more about? (enter a number 1-15): ");
                         continue;
                     }
                     else
                     {
-                        Console.Write("That is not a valid response. Would you like to know more about the students? (enter \"yes\" or \"no\"): ");
+                        Console.Write("That is not a valid response. Please try again. (enter \"yes\" or \"no\"): ");
                         goto getContinueChoice;
                     }
                 }
                 catch (IndexOutOfRangeException)
                 {
-                    Console.Write("That student does not exist. Please try again. (enter a number 1-20): ");
+                    Console.Write("That student does not exist. Press any key to see a directory or enter \"skip\" to skip: ");
+                    if (Console.ReadLine() != "skip")
+                    {
+                        displayStudentDirectory();
+                    }
+                    Console.WriteLine("");
+                    Console.Write("Which student would you like to learn more about? (enter a number 1-15): ");
                 }
                 catch (FormatException)
                 {
                     Console.WriteLine("");
-                    Console.Write("That is not a whole number. Please try again. (enter a number 1-20): ");
+                    Console.Write("That is not a whole number. Please try again. (enter a number 1-15): ");
                 }
             }
             Console.Write("Thanks");
@@ -88,6 +94,24 @@ namespace Lab8
                  };
 
             return studentArray[studentNum-1];
+        }
+
+        static void displayStudentDirectory()
+        {
+            Console.WriteLine("");
+            int counter = 1;
+            while (true)
+            {
+                try
+                {
+                    string[] studentDetails = getStudent(counter);
+                    Console.WriteLine($"Student {counter++,2} = {studentDetails[0]}");
+                }
+                catch (IndexOutOfRangeException)
+                {
+                    break;
+                }
+            }
         }
     }
 }
