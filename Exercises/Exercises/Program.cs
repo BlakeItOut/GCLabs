@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace Exercises
 {
@@ -13,13 +14,26 @@ namespace Exercises
         {
             while (true)
             {
-                Exercises obj = new Exercises();
+                ActualExercises obj = new ActualExercises();
+                askExerciseNumber:
                 Console.Write("What exercise # would you like to go to? ");
-                int response = int.Parse(Console.ReadLine());
-                if(response > 0)
+                int response = -23;
+                if (!int.TryParse(Console.ReadLine(), out response) || response < -22 || response > 78) {
+                    goto askExerciseNumber;
+                }
+                if (response == 0)
+                {
+                    break;
+                }
+                else if(response > 0 && response < 26)
                 {
                     MethodInfo method = obj.GetType().GetMethod($"Exercise{response}");
                     method.Invoke(obj, null);
+                }
+                else if (response > 25)
+                {
+                    MethodInfo method = obj.GetType().GetMethod($"Exercise{response}");
+                    continueLoop((Action) Delegate.CreateDelegate(typeof(Action), obj, method));
                 }
                 else
                 {
@@ -28,11 +42,36 @@ namespace Exercises
                 }
             }
         }
+        static void continueLoop(Action methodName)
+        {
+            while (true)
+            {
+                methodName();
+            continueQuestion:
+                Console.Write("Would you like to continue (y/n)? ");
+                char response = char.ToLower(Console.ReadKey().KeyChar);
+                Console.WriteLine("");
+                if (response == 'y')
+                {
+                    continue;
+                }
+                else if (response == 'n')
+                {
+                    break;
+                }
+                else
+                {
+                    Console.Write("That is not a valid response.");
+                    goto continueQuestion;
+                }
+            }
+            Console.WriteLine("Goodbye!");
+        }
     }
 
-    public class Exercises
+    public class ActualExercises
     {
-        public Exercises()
+        public ActualExercises()
         {
 
         }
@@ -124,10 +163,6 @@ namespace Exercises
         {
 
         }
-        public void Exercise0()
-        {
-
-        }
         public void Exercise1()
         {
             Console.Write("Enter some text: ");
@@ -214,7 +249,7 @@ namespace Exercises
         }
         public void Exercise8()
         {
-            Exercises obj = new Exercises();
+            ActualExercises obj = new ActualExercises();
             for (int i = 2; i <= 5; i++)
             {
                 do
@@ -477,83 +512,242 @@ namespace Exercises
         }
         public void Exercise21()
         {
-            string[][] studentData = {
-                new string [] {"Michael Hern", "Canton, MI","Chicken Wings", "Wolverine"},
-                new string [] {"Taylor Everts", "Caro, MI", "Cordon Bleu", "Chicken"},
-                new string [] {"Joshua Zimmerman", "Taylor, MI", "Turkey", "Sloth"},
-                new string [] {"Lin-Z Chang", "Toledo, OH", "Ice Cream", "Honey Badger"},
-                new string [] {"Madelyn Hilty", "Oxford, MI", "Croissent", "Dragon"},
-                new string [] {"Nana Banahene", "Guana", "Empanadas", "Zebra"},
-                new string [] {"Rochelle Toles", "Mars", "Space Cheese", "Racoon"},
-                new string [] {"Shah Shahid", "Newark, NJ", "Chicken Wings", "Eagle"},
-                new string [] {"Tim Broughton", "Detroit, MI", "Chicken Parm", "Hedgehog"},
-                new string [] {"Abby Wessels", "Traverse City, MI", "Soup", "Doe"},
-                new string [] {"Blake Shaw", "Los Angeles, CA", "Cannolis", "Bat"},
-                new string [] {"Bob Valentic", "St. Clair Shores, MI", "Pizza", "Octopus"},
-                new string [] {"Jordan Owiesny", "Warren, MI", "Burgers", "Penguin"},
-                new string [] {"Jay Stiles", "Macomb, MI", "Pickles", ""},
-                new string [] {"Jon Shaw", "Huntington Woods, MI", "Ribs", "Dog"}
-                 };
-            for (int i = 0; i < studentData.Length; i++)
+            while(true)
             {
-                Console.WriteLine("new StudentInfo() { Name = \"" + $"{studentData[i][0]}\", hometown = \"{studentData[i][1]}\", favFood = \"{studentData[i][2]}\", favAnimal = \"{studentData[i][3]}\"" + "},");
+                string sentence = "";
+                while (true)
+                {
+                    Console.Write("Enter a word: ");
+                    sentence += Console.ReadLine();
+                    Console.Write("Would you like to enter another word (y/n)? ");
+                    if (Char.ToLower(Console.ReadKey().KeyChar) == 'n')
+                    {
+                        Console.WriteLine("");
+                        break;
+                    }
+                    sentence += " ";
+                    Console.WriteLine("");
+                }
+                Console.WriteLine(sentence);
+                Console.Write("Would you like to continue (y/n)? ");
+                if (Char.ToLower(Console.ReadKey().KeyChar) == 'n')
+                {
+                    Console.WriteLine("Goodbye!");
+                    break;
+                }
+                Console.WriteLine("");
             }
         }
         public void Exercise22()
         {
-
+            Console.Write("Enter a number: ");
+            int num1 = int.Parse(Console.ReadLine());
+            Console.Write("Enter another number: ");
+            int num2 = int.Parse(Console.ReadLine());
+            Console.WriteLine($"Your range is {num1}-{num2}.");
+            while (true)
+            {
+                Console.Write("Enter a number to verify it is in the range: ");
+                int numToCheck = int.Parse(Console.ReadLine());
+                if (numToCheck >= num1 && numToCheck <= num2)
+                {
+                    Console.WriteLine($"{numToCheck} is in the range.");
+                }
+                else
+                {
+                    Console.WriteLine($"{numToCheck} is outside the range.");
+                }
+                Console.Write("Would you like to continue (y/n)? ");
+                if (Char.ToLower(Console.ReadKey().KeyChar) == 'n')
+                {
+                    Console.WriteLine("");
+                    Console.WriteLine("Goodbye!");
+                    break;
+                }
+                Console.WriteLine("");
+            }
         }
         public void Exercise23()
         {
-
+            while (true)
+            {
+                Console.Write("Enter some text: ");
+                string userInput = Console.ReadLine();
+                Console.WriteLine($"The first ten characters were: {userInput.Substring(0, 10)}");
+                Console.Write("Would you like to continue (y/n)? ");
+                if (Char.ToLower(Console.ReadKey().KeyChar) == 'n')
+                {
+                    Console.WriteLine("");
+                    Console.WriteLine("Goodbye!");
+                    break;
+                }
+                Console.WriteLine("");
+            }
         }
         public void Exercise24()
         {
-
+            while (true)
+            {
+                Console.Write("Enter some text: ");
+                string userInput = Console.ReadLine();
+                Console.WriteLine($"The last ten characters were: {userInput.Substring(userInput.Length-10)}");
+                Console.Write("Would you like to continue (y/n)? ");
+                if (Char.ToLower(Console.ReadKey().KeyChar) == 'n')
+                {
+                    Console.WriteLine("");
+                    Console.WriteLine("Goodbye!");
+                    break;
+                }
+                Console.WriteLine("");
+            }
         }
         public void Exercise25()
         {
-
+            char response;
+            do
+            {
+                Console.Write("Enter a sentence: ");
+                foreach (string word in Console.ReadLine().Split(' '))
+                {
+                    Console.WriteLine(word);
+                }
+                Console.Write("Would you like to continue (y/n)? ");
+                response = char.ToLower(Console.ReadLine()[0]);
+            } while (response != 'n');
+            Console.WriteLine("Goodbye!");
         }
         public void Exercise26()
         {
-
+            Console.Write("Enter some text: ");
+            Console.WriteLine($"There were {Console.ReadLine().ToLower().Count(c => Regex.IsMatch(c.ToString(), @"[aeiou]"))} vowels.");
         }
         public void Exercise27()
         {
-
+            Console.Write("Enter some text: ");
+            Console.WriteLine($"There were {Console.ReadLine().ToLower().Count(c => Regex.IsMatch(c.ToString(), @"[b-df-hj-np-tv-z]"))} consonants.");
         }
         public void Exercise28()
         {
-
+            Console.Write("Enter some text: ");
+            Console.WriteLine(Console.ReadLine().Where(c => Regex.IsMatch(c.ToString(), @"[^AEIOUaeiou]")).ToArray());
         }
         public void Exercise29()
         {
-
+            Console.Write("Enter some text: ");
+            string text = Console.ReadLine();
+            string outputText = text[0].ToString();
+            for(int i = 1; i < text.Length-1; i++)
+            {
+                if(Char.IsPunctuation(text[i]) || Char.IsPunctuation(text[i+1]) || Char.IsWhiteSpace(text[i]) || Char.IsWhiteSpace(text[i+1]) || Char.IsWhiteSpace(text[i-1]) || Regex.IsMatch(text[i].ToString(), @"[^AEIOUaeiou]"))
+                {
+                    outputText += text[i];
+                }
+                else
+                {
+                    continue;
+                }
+            }
+            Console.WriteLine(outputText + text[text.Length - 1]);
         }
         public void Exercise30()
         {
-
+            Console.Write("Enter some text: ");
+            Console.WriteLine(new string(Console.ReadLine().ToCharArray().Reverse().ToArray()));
         }
         public void Exercise31()
         {
-
+            int[] numbers = { 2, 8, 0, 24, 51 };
+            Console.Write("Enter an index of the array: ");
+            int index;
+            bool checkIndexInt = int.TryParse(Console.ReadLine(), out index);
+            if (checkIndexInt && index < numbers.Length)
+            {
+                Console.WriteLine($"The value at index {index} is {numbers[index]}");
+            }
+            else
+            {
+                Console.WriteLine("That is not a valid index.");
+            }
         }
         public void Exercise32()
         {
-
+            int[] numbers = { 2, 8, 0, 24, 51 };
+            Console.Write("Enter a number: ");
+            int number;
+            bool checkIndexInt = int.TryParse(Console.ReadLine(), out number);
+            if (checkIndexInt && numbers.Contains(number))
+            {
+                Console.WriteLine($"The value {number} can be found at {Array.IndexOf(numbers, number)}");
+            }
+            else
+            {
+                Console.WriteLine("That value cannot be found in the array.");
+            }
         }
+
+        public int[] numbers = { 2, 8, 0, 24, 51 };
+
         public void Exercise33()
         {
-
+            Console.Write("Enter an index of the array: ");
+            int index;
+            bool checkIndexInt = int.TryParse(Console.ReadLine(), out index);
+            if (checkIndexInt && index < numbers.Length)
+            {
+                Console.Write($"The value at index {index} is {numbers[index]}. Would you like to change it (y/n)? ");
+                if(Char.ToLower(Console.ReadLine()[0]) == 'y')
+                {
+                    Console.Write($"Enter the new value at index {index}: ");
+                    numbers[index] = int.Parse(Console.ReadLine());
+                    Console.Write($"The value at index {index} is {numbers[index]}. ");
+                }
+            }
+            else
+            {
+                Console.WriteLine("That is not a valid index.");
+            }
         }
         public void Exercise34()
         {
 
         }
+        public string textValue;
+        public int numberValue;
         public void Exercise35()
         {
+            int arraySize = int.Parse(promptUser("How many string would you like to use? ", (str => int.TryParse(str, out numberValue))));
+            string[] arrayOfStrings = new string[arraySize];
+            for(int i = 0; i < arraySize; i++)
+            {
+                arrayOfStrings[i] = promptUser($"What would you like for your string at index {i}? ", (str => true));
+            }
+            arrayOfStrings.ToList().ForEach(Console.WriteLine);
+            do
+            {
+                getValue(arrayOfStrings);
+            } while (promptUser("Would you like to get another value? (y/n) ", (str => str.ToLower()[0] == 'y' || str.ToLower()[0] == 'n')).ToLower()[0] == 'y');
+        }
 
+         public void getValue(string[] arrayOfStrings)
+        {
+            int arrayIndex = int.Parse(promptUser("What array index would you like to use? ", (str => int.TryParse(str, out numberValue) && numberValue < arrayOfStrings.Length && numberValue >= 0)));
+            int stringIndex = int.Parse(promptUser("What string index would you like to use? ", (str => int.TryParse(str, out numberValue) && numberValue < arrayOfStrings[arrayIndex].Length && numberValue >= 0)));
+            Console.WriteLine($"The value at index {arrayIndex} is {arrayOfStrings[arrayIndex]}. The letter at index {stringIndex} is {arrayOfStrings[arrayIndex][stringIndex]}.");
+        }
+
+        static string promptUser(string message, Func<string, bool> condition)
+        {
+            Console.Write(message);
+            string textValue = Console.ReadLine();
+            if (condition(textValue))
+            {
+                return textValue;
+            }
+            else
+            {
+                Console.WriteLine("This is not valid input.");
+                return promptUser(message, condition);
+            }
         }
         public void Exercise36()
         {
