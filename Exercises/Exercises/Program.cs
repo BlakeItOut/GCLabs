@@ -477,7 +477,27 @@ namespace Exercises
         }
         public void Exercise21()
         {
-
+            string[][] studentData = {
+                new string [] {"Michael Hern", "Canton, MI","Chicken Wings", "Wolverine"},
+                new string [] {"Taylor Everts", "Caro, MI", "Cordon Bleu", "Chicken"},
+                new string [] {"Joshua Zimmerman", "Taylor, MI", "Turkey", "Sloth"},
+                new string [] {"Lin-Z Chang", "Toledo, OH", "Ice Cream", "Honey Badger"},
+                new string [] {"Madelyn Hilty", "Oxford, MI", "Croissent", "Dragon"},
+                new string [] {"Nana Banahene", "Guana", "Empanadas", "Zebra"},
+                new string [] {"Rochelle Toles", "Mars", "Space Cheese", "Racoon"},
+                new string [] {"Shah Shahid", "Newark, NJ", "Chicken Wings", "Eagle"},
+                new string [] {"Tim Broughton", "Detroit, MI", "Chicken Parm", "Hedgehog"},
+                new string [] {"Abby Wessels", "Traverse City, MI", "Soup", "Doe"},
+                new string [] {"Blake Shaw", "Los Angeles, CA", "Cannolis", "Bat"},
+                new string [] {"Bob Valentic", "St. Clair Shores, MI", "Pizza", "Octopus"},
+                new string [] {"Jordan Owiesny", "Warren, MI", "Burgers", "Penguin"},
+                new string [] {"Jay Stiles", "Macomb, MI", "Pickles", ""},
+                new string [] {"Jon Shaw", "Huntington Woods, MI", "Ribs", "Dog"}
+                 };
+            for (int i = 0; i < studentData.Length; i++)
+            {
+                Console.WriteLine("new StudentInfo() { Name = \"" + $"{studentData[i][0]}\", hometown = \"{studentData[i][1]}\", favFood = \"{studentData[i][2]}\", favAnimal = \"{studentData[i][3]}\"" + "},");
+            }
         }
         public void Exercise22()
         {
