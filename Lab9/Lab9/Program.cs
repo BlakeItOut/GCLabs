@@ -47,7 +47,7 @@ namespace Lab9
                         lookUp(students);
                         break;
                     case 'a':
-                        addNewStudent(students);
+                        addNewStudent(ref students);
                         break;
                     case 'q': 
                         quit = true;
@@ -61,11 +61,10 @@ namespace Lab9
             }
         }
 
-        static List<StudentInfo> addNewStudent(List<StudentInfo> students)
+        static void addNewStudent(ref List<StudentInfo> students)
         {
             StudentInfo newStudent = makeStudent();
             students.Insert(~(students.BinarySearch(newStudent)),newStudent);
-            return students;
         }
 
         static StudentInfo makeStudent ()
