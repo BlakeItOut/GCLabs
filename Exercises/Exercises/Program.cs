@@ -715,7 +715,7 @@ namespace Exercises
         public int numberValue;
         public void Exercise35()
         {
-            int arraySize = int.Parse(promptUser("How many string would you like to use? ", (str => int.TryParse(str, out numberValue))));
+            int arraySize = int.Parse(promptUser("How many string would you like to use? ", (str => Regex.IsMatch(str,@"^[0-9]*$"))));
             string[] arrayOfStrings = new string[arraySize];
             for(int i = 0; i < arraySize; i++)
             {
