@@ -102,7 +102,8 @@ namespace Capstone2
 
         static void showBooks(List<Book> library)
         {
-            library.ForEach(book => Console.WriteLine($"{library.IndexOf(book)}: [" + (book.checkedOut?($"Unavailable, due back on {book.dueDate:d}"):"Available!") + $"] {book.title} by {book.author}"));
+            Console.WriteLine($"{"Index",-6}{"Title",-35}{"Author",-20}Availability");
+            library.ForEach(book => Console.WriteLine($"{library.IndexOf(book),4}: {book.title, -35}{book.author, -20}[" + (book.checkedOut ? ($"Unavailable, due back on {book.dueDate:d}") : "Available!") + "]"));
             Console.WriteLine("");
         }
 
@@ -129,7 +130,7 @@ namespace Capstone2
         static void completeBookTransaction(ref List<Book> library, List<Book> matchingBooks)
         {
             showBooks(matchingBooks);
-            int bookIndex = int.Parse(promptUser($"Enter the number of the book you would like to check out or return between 0 and {matchingBooks.Count - 1}: ", (str => int.TryParse(str, out bookIndex) && bookIndex < (matchingBooks.Count) && bookIndex >= 0)));
+            int bookIndex = int.Parse(promptUser($"Enter the index of the book you would like to check out between 0 and {matchingBooks.Count - 1}: ", (str => int.TryParse(str, out bookIndex) && bookIndex < (matchingBooks.Count) && bookIndex >= 0)));
             Console.WriteLine("");
             Book checkedOutBook = library[library.IndexOf(matchingBooks[bookIndex])];
             checkedOutBook.checkedOut = !checkedOutBook.checkedOut;
@@ -140,8 +141,15 @@ namespace Capstone2
             }
             else
             {
-                checkedOutBook.dueDate = null;
-                Console.WriteLine($"You successfully returned {checkedOutBook.title} by {checkedOutBook.author}.");
+                if(promptUser("This book has already been checked out. Are you returning it? (y/n) ", (str => str.ToLower()[0] == 'y' || str.ToLower()[0] == 'n')).ToLower()[0] =='y')
+                {
+                    checkedOutBook.dueDate = null;
+                    Console.WriteLine($"You successfully returned {checkedOutBook.title} by {checkedOutBook.author}.");
+                }
+                else
+                {
+                    checkedOutBook.checkedOut = !checkedOutBook.checkedOut;
+                }
             }
             
             Console.WriteLine("");
