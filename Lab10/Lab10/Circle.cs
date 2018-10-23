@@ -15,29 +15,14 @@ namespace Lab10
             _radius = radius;
         }
 
-        public double CalculateCircumference()
-        {
-            return 2 * Math.PI * _radius;
-        }
+        public double CalculateCircumference() => 2 * Math.PI * _radius;
 
-        public string CalculateFormattedCircumference()
-        {
-            return FormatNumber(CalculateCircumference());
-        }
+        public string CalculateFormattedCircumference() => FormatNumber(CalculateCircumference());
 
-        public double CalculateArea()
-        {
-            return Math.PI * Math.Pow(_radius, 2);
-        }
+        public double CalculateArea() => Math.PI * Math.Pow(_radius, 2);
 
-        public string CalculateFormattedArea()
-        {
-            return FormatNumber(CalculateArea());
-        }
+        public string CalculateFormattedArea() => FormatNumber(CalculateArea());
 
-        private string FormatNumber(double x)
-        {
-            return $"{x:0.00}";
-        }
+        private string FormatNumber(double x) => $"{x:0.00}";
     }
 }
