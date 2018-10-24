@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace Lab11
 {
-    public class Movie : IComparable
+    public class Movie : IComparable, IComparer
     {
         private string _title;
         private string _category;
         private int _releaseYear;
 
-        public Movie (string title, int releaseYear, string category)
+        public Movie (string title = null, int releaseYear = 0, string category = null)
         {
             _title = title;
             _category = category;
@@ -35,6 +35,23 @@ namespace Lab11
                 result = this._releaseYear.CompareTo(thatMovie._releaseYear);
             }
             return result;
+        }
+
+        public int Compare(object x, object y)
+        {
+            Movie thisMovie = (Movie)x;
+            Movie thatMovie = (Movie)y;
+            int result = ((new CaseInsensitiveComparer()).Compare(thisMovie.GetTitle(), thatMovie.GetTitle()));
+            if (result == 0)
+            {
+                result = ((new CaseInsensitiveComparer()).Compare(thisMovie.GetYear(), thatMovie.GetYear()));
+                if (result == 0)
+                {
+                    result = ((new CaseInsensitiveComparer()).Compare(thisMovie.GetCategory(), thatMovie.GetCategory()));
+                }
+            }
+            return result;
+
         }
     }
 }

@@ -16,7 +16,7 @@ namespace Lab11.Tests
         public void getMovieListTest()
         {
             MovieList movieList = new MovieList();
-            CompareMovies compareMovies = new CompareMovies();
+            Movie movie = new Movie();
 
             ArrayList expected = new ArrayList
             {
@@ -285,14 +285,14 @@ namespace Lab11.Tests
 
             ArrayList actual = movieList.getMovieList();
 
-            CollectionAssert.AreEqual(expected, actual, compareMovies);
+            CollectionAssert.AreEqual(expected, actual, movie);
         }
 
         [TestMethod()]
         public void getMovieListTest1()
         {
             MovieList movieList = new MovieList();
-            CompareMovies compareMovies = new CompareMovies();
+            Movie movie = new Movie();
 
             ArrayList expected = new ArrayList
             {
@@ -320,14 +320,14 @@ namespace Lab11.Tests
 
             ArrayList actual = movieList.getMovieList("animated");
 
-            CollectionAssert.AreEqual(expected, actual, compareMovies);
+            CollectionAssert.AreEqual(expected, actual, movie);
         }
 
         [TestMethod()]
         public void getMovieListTest2()
         {
             MovieList movieList = new MovieList();
-            CompareMovies compareMovies = new CompareMovies();
+            Movie movie = new Movie();
 
             ArrayList expected = new ArrayList
             {
@@ -355,7 +355,7 @@ namespace Lab11.Tests
 
             ArrayList actual = movieList.getMovieList("horror");
 
-            CollectionAssert.AreNotEqual(expected, actual, compareMovies);
+            CollectionAssert.AreNotEqual(expected, actual, movie);
         }
     }
 }

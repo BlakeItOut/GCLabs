@@ -43,7 +43,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CompareMovies.cs" />
     <Compile Include="Movie.cs" />
     <Compile Include="MovieList.cs" />
     <Compile Include="Program.cs" />

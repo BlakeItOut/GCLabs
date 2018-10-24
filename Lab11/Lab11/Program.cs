@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Lab11
 {
-    enum Categories
+    public enum Categories
     {
         animated = 1,
         drama = 2,
