@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2046
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capstone3", "Capstone3\Capstone3.csproj", "{E735852D-1DA9-453B-A5F3-1E40161AE1A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capstone3Tests1", "Capstone3Tests1\Capstone3Tests1.csproj", "{8067D3C7-9129-408D-9AF7-DE5350542D54}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E735852D-1DA9-453B-A5F3-1E40161AE1A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E735852D-1DA9-453B-A5F3-1E40161AE1A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E735852D-1DA9-453B-A5F3-1E40161AE1A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E735852D-1DA9-453B-A5F3-1E40161AE1A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8067D3C7-9129-408D-9AF7-DE5350542D54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8067D3C7-9129-408D-9AF7-DE5350542D54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8067D3C7-9129-408D-9AF7-DE5350542D54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8067D3C7-9129-408D-9AF7-DE5350542D54}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F1193A16-E4A5-4D4A-9C2E-9C1A0A17C513}
+	EndGlobalSection
+EndGlobal
