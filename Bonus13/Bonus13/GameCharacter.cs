@@ -8,7 +8,7 @@ namespace Bonus13
 {
     class GameCharacter
     {
-        public string Name { private get; set; }
+        public string Name { get; set; }
         public virtual int Strength { get; set; } = SingleRandom.Instance.Next(0, 50);
         public virtual int Intelligence { get; set; } = SingleRandom.Instance.Next(0, 50);
 
