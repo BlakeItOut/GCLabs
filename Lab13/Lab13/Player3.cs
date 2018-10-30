@@ -8,16 +8,18 @@ namespace Lab13
 {
     class Player3 : Player2
     {
+        public override string Name { get; set; } = "TheFuzz";
         Random _random = new Random();
         public override Roshambo.Roshambos GenerateRoshambo()
         {
-            if (Program._winnersLosers.Count() < 5)
+            if (Program._winnersLosers.Count() < 2)
             {
                 return base.GenerateRoshambo();
             }
             else
             {
-                return (Roshambo.Roshambos)(((int)Program._userChoices[_random.Next(0, Program._userChoices.Count())] + 1)%3);
+                Roshambo = (Roshambo.Roshambos)(((int)Program._userChoices[_random.Next(Program._userChoices.Count()-2, Program._userChoices.Count())] + 1)%3);
+                return Roshambo;
             }
         }
     }

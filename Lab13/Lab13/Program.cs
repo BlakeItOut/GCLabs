@@ -12,16 +12,16 @@ namespace Lab13
         public static List<Roshambo.Roshambos> _userChoices = new List<Roshambo.Roshambos>();
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to Rock Paper Scissors!\n");
+            Console.WriteLine("Welcome to Rock Paper Scissors!");
 
-            Player user = new Player1() { Name = Validator.promptUser("Enter your name: ", (name => !String.IsNullOrWhiteSpace(name))) };
+            Player user = new Player1() { Name = Validator.promptUser("\nEnter your name: ", (name => !String.IsNullOrWhiteSpace(name))) };
             Player opponent = getOpponent();
             
             while (true)
             {
                 user.Roshambo = translateStringToRoshambos(Validator.promptUser("\nRock, paper, or scissors? (r/p/s) ", (name => name.Equals("r", StringComparison.OrdinalIgnoreCase) || name.Equals("p", StringComparison.OrdinalIgnoreCase) || name.Equals("s", StringComparison.OrdinalIgnoreCase))).ToLower());
-                _userChoices.Add(user.Roshambo);
                 Console.WriteLine($"\n{user.Name}: {user.Roshambo}\n{opponent.Name}: {opponent.GenerateRoshambo()}");
+                _userChoices.Add(user.Roshambo);
                 _winnersLosers.Add(getWinnerLoser(user, opponent));
                 Console.WriteLine(_winnersLosers[_winnersLosers.Count-1]==null?"Draw!":$"{_winnersLosers[_winnersLosers.Count - 1][0].Name} wins");
                 if (!(Validator.promptYN("\nPlay again? (y/n) ")))
@@ -59,7 +59,7 @@ namespace Lab13
 
         static Player[] getWinnerLoser (Player user, Player opponent)
         {
-            switch(((int)user.Roshambo-(int)opponent.Roshambo)%3)
+            switch (((int)user.Roshambo-(int)opponent.Roshambo+3)%3)
             {
                 case 1:
                     return new Player[] { user, opponent };
