@@ -19,7 +19,17 @@ namespace Lab14
             dolly.Name = "Dolly";
             CountTestApp.RunTest(dolly, 3);
             CountTestApp.RunTest(blackie, 1);
-            Console.ReadKey();
+            while (true)
+            {
+                string newName = Validator.promptUser("\nWhat would you like to name your clone? ", (str => !String.IsNullOrWhiteSpace(str)));
+                int maxCount = int.Parse(Validator.promptUser("How many clones would you like? ", (num => int.TryParse(num, out maxCount) && maxCount > 0)));
+                CountTestApp.RunTest((ICountable)blackie.Clone(), maxCount, newName);
+                if (!Validator.promptYN("\nWould you like to clone another? (y/n) "))
+                {
+                    break;
+                }
+            } 
         }
+
     }
 }
