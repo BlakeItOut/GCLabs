@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab14
 {
-    class Alligator : ICountable
+    public class Alligator : ICountable
     {
         private int _count = 1;
         public int GetCount()

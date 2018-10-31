@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab14
 {
-    interface ICountable
+    public interface ICountable
     {
         void IncrementCount();
         void ResetCount();

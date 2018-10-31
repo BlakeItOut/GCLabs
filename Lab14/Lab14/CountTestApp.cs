@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab14
 {
-    class CountTestApp
+    public class CountTestApp
     {
         public static void RunTest(ICountable c, int MaxCount)
         {

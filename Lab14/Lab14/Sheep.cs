@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab14
 {
-    class Sheep : ICountable, ICloneable
+    public class Sheep : ICountable, ICloneable
     {
         public object Clone()
         {
