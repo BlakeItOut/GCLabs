@@ -12,13 +12,13 @@ namespace Lab13
         Random _random = new Random();
         public override Roshambo.Roshambos GenerateRoshambo()
         {
-            if (Program._winnersLosers.Count() < 2)
+            if (RoshamboApp._winnersLosers.Count() < 2)
             {
                 return base.GenerateRoshambo();
             }
             else
             {
-                Roshambo = (Roshambo.Roshambos)(((int)Program._userChoices[_random.Next(Program._userChoices.Count()-2, Program._userChoices.Count())] + 1)%3);
+                Roshambo = (Roshambo.Roshambos)(((int)RoshamboApp._userChoices[_random.Next(RoshamboApp._userChoices.Count()-2, RoshamboApp._userChoices.Count())] + 1)%3);
                 return Roshambo;
             }
         }

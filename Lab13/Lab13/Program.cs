@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab13
 {
-    class Program
+    class RoshamboApp
     {
         public static List<Player[]> _winnersLosers = new List<Player[]>();
         public static List<Roshambo.Roshambos> _userChoices = new List<Roshambo.Roshambos>();
