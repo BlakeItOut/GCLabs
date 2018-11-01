@@ -21,7 +21,7 @@ namespace Lab12
         }
         public override string ToString()
         {
-            return base.ToString() + $" ,school={_school}, pay={_pay}]";
+            return base.ToString() + $" ,school={_school}, pay={_pay}";
         }
     }
 }

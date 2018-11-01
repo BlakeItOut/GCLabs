@@ -11,6 +11,27 @@ namespace Lab12
         private string _program;
         private int _year;
         private double _fee;
+        public string Program
+        {
+            get
+            {
+                return _program;
+            }
+        }
+        public int Year
+        {
+            get
+            {
+                return _year;
+            }
+        }
+        public double Fee
+        {
+            get
+            {
+                return _fee;
+            }
+        }
         public Student ()
         {
 
@@ -23,7 +44,7 @@ namespace Lab12
         }
         public override string ToString()
         {
-            return base.ToString()+$" ,program={_program}, year={_year}, fee={_fee}]";
+            return base.ToString()+$" ,program={_program}, year={_year}, fee={_fee}";
         }
     }
 }

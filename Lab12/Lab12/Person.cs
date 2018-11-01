@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab12
 {
-    class Person
+    class Person : IComparable<Person>
     {
         private string _name;
         private string _address;
@@ -43,7 +43,18 @@ namespace Lab12
         }
         public override string ToString()
         {
-            return $"Person[name={_name}, address={_address}]";
+            return $"type={this.GetType().ToString().Split('.')[1]}, name={_name}, address={_address}";
+        }
+        public int CompareTo(Person that)
+        {
+            string[] thatName = that.Name.Split(' ');
+            string[] thisName = this.Name.Split(' ');
+            int result = thisName[0].CompareTo(thatName[0]);
+            if (result == 0)
+            {
+                result = thisName[1].CompareTo(thatName[1]);
+            }
+            return result;
         }
     }
 }
