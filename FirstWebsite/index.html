@@ -4,12 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link href="home.css" rel="stylesheet">
+    <title>Remixable</title>
+    <link href="main.css" rel="stylesheet">
+    <script src="main.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Spicy+Rice" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
+
 </head>
 <body>
-    <h1 class="testClass"><a href="anotherPage.html">Repeating thing</a></h1>
-    <div id="testId">Unique Thing</div>
+    <h1 id="clicker">Click to Remix!</h1>
+    <div class="transparent"></div>
+    <div class="centered">
+        <img class="circle" id="person" src="https://placeimg.com/200/200/people" alt="">
+        <div class="symbol">=></div>
+        <img class="circle" id="personAnimal" src="https://placeimg.com/200/200/people" alt="">
+        <div class="symbol"><=</div>
+        <img class="circle" id="animal" src="https://placeimg.com/200/200/animals" alt="">
+    </div>
+    <img class="circle overlap" id="animalPerson" src="https://placeimg.com/200/200/animals" alt="">
 </body>
 </html>
