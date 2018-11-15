@@ -1,0 +1,40 @@
+.nav{
+    display: flex;
+    position: fixed;
+    top:0;
+    padding: 5px 0px;
+    width: 100%;
+    background-color: white;
+}
+
+.navItem{
+    width: 50px;
+}
+
+footer{
+    justify-content: space-between;
+    display: flex;
+}
+
+footer li{
+    float:left;
+    width: 10px;
+    height: 10px;
+}
+
+.copyright{
+    margin: 10px 40px;
+}
+
+.proLinks{
+    display:flex;
+}
+
+.icon{
+    height: 30px;
+    width: 30px;
+}
+
+#map {
+    height: 1000px;
+}
