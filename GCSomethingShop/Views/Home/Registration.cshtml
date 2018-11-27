@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "Registration";
+}
+<h2>@ViewData["Title"]</h2>
+
+<form method="post">
+    <h5 class="mb-4">Basic Info</h5>
+    <div class="form-group">
+        <label class="form-control-label" for="first-name">First Name:</label>
+        <input type="text" class="form-control" id="first-name" name="first-name">
+    </div>
+    <div class="form-group">
+        <label class="form-control-label" for="last-name">Last Name:</label>
+        <input type="text" class="form-control" id="last-name" name="last-name">
+    </div>
+    <div class="form-group">
+        <label class="form-control-label" for="email">Email:</label>
+        <input type="email" class="form-control" id="email" name="email">
+    </div>
+    <div class="form-group">
+        <label class="form-control-label" for="phone-number">Phone Number:</label>
+        <input type="tel" class="form-control" id="phone-number" name="phone-number">
+    </div>
+    <div class="form-group">
+        <label class="form-control-label" for="password">Password:</label>
+        <input type="password" class="form-control" id="password" name="password">
+    </div>
+    <hr class="mb-4">
+    <button type="submit" class="btn btn-primary btn-lg">Register</button>
+</form><!-- /registration form -->
