@@ -20,8 +20,14 @@ namespace GCSomethingShop.Controllers
             return View();
         }
 
-        [ActionName("Registration"), HttpPost]
-        public IActionResult RegistrationPost()
+        [HttpPost]
+        public IActionResult Registration(string firstName, string lastName, string email, string phoneNumber, string password)
+        {
+            TempData["firstName"] = firstName;
+            return RedirectToAction("Welcome");
+        }
+
+        public IActionResult Welcome()
         {
             return View();
         }
