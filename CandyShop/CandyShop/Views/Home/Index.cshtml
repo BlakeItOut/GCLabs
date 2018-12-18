@@ -1,0 +1,29 @@
+﻿@model IEnumerable<CandyShop.Models.Item>
+@{
+    ViewBag.Title = "Home";
+}
+
+<form class="my-4" asp-controller="Home" asp-action="Index" method="get">
+    <p>
+        <input type="text" name="SearchString">
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+
+<div class="card-deck">
+    @foreach (var item in Model)
+    {
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="~/Content/Images/@(Html.DisplayFor(model => item.Name)).jpg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">
+                    @Html.DisplayFor(model => item.Name)
+                </h5>
+                <p class="card-text">
+                    @Html.DisplayFor(model => item.Description)
+                </p>
+                <a href="#" class="btn btn-primary">Buy Now</a>
+            </div>
+        </div>
+    }
+</div>

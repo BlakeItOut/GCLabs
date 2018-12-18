@@ -1,0 +1,60 @@
+﻿@model ModelFirstFramework.Models.DevBuildMoviesDBEntities
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Movie Index</h2>
+<table class="table">
+    <tr>
+        <th>
+            Movie Title
+        </th>
+        <th>
+            Genre
+        </th>
+        <th>
+            Year
+        </th>
+        <th>
+            Watched
+        </th>
+        <th>
+            Director
+        </th>
+    </tr>
+@foreach(var movie in ViewBag.Movies)
+{
+    <tr>
+        <td>
+            @movie.Title
+        </td>
+        <td>
+            @movie.Genre
+        </td>
+        <td>
+            @movie.Year
+        </td>
+        <td>
+            @movie.Watched
+        </td>
+        @if (movie.Director != null)
+        {
+            <td>
+                @movie.Director.FirstName @movie.Director.LastName
+            </td>
+        }
+        else
+        {
+            <td>
+                <a href="~/db/AddDirector?MovieID=@movie.MovieID" class="btn-primary">Add a director</a>
+            </td>
+        }
+        <td><a href="~/db/EditMovie?MovieID=@movie.MovieID" class="btn-primary">Edit this movie</a></td>
+        <td><a href="~/db/DeleteMovie?MovieID=@movie.MovieID">Delete this movie</a></td>
+    </tr>
+}
+</table>
+
+<a href="~/DB/AddMovie" class="btn-group">Add</a>
+
+

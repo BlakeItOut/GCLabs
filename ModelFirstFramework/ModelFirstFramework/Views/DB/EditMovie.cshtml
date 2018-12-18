@@ -1,0 +1,28 @@
+﻿@model ModelFirstFramework.Models.Movie
+@{
+    ViewBag.Title = "EditMovie";
+}
+
+<form action="~/DB/SaveMovieChanges" method="post">
+    <input type="hidden" name="MovieID" value="@Model.MovieID" />
+    <input type="text" name="Title" value="@Model.Title" />
+    <input type="text" name="Genre" value="@Model.Genre" />
+    <input type="text" name="Year" value="@Model.Year" />
+    @if (Model.Watched == "Yes")
+    {
+        <input type="radio" name="Watched" id="Yes" value="Yes" checked />
+        <label for="Yes">Watched</label>
+        <input type="radio" name="Watched" id="No " value="No" />
+        <label for="Yes">Not Watched</label>
+    }
+    else
+    {
+        <input type="radio" name="Watched" id="Yes" value="Yes" />
+        <label for="Yes">Watched</label>
+        <input type="radio" name="Watched" id="No " value="No" checked />
+        <label for="Yes">Not Watched</label>
+    }
+
+    <input type="submit" class="btn-default" />
+</form>
+

@@ -61,7 +61,7 @@ namespace Capstone6
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Todos}/{action=Index}/{id?}");
+                    template: "{controller=Users}/{action=Create}/{id?}");
             });
         }
     }

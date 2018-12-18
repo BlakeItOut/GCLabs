@@ -1,0 +1,21 @@
+﻿@model Lab28Framework.Models.Draw
+@{
+    ViewBag.Title = "Battle";
+}
+
+<h2>Battle</h2>
+Player 1 wins: @TempData["player1wins"] Ties: @TempData["ties"] Player 2 wins: @TempData["player2wins"]
+<div class="jumbotron">
+    <div class="card-deck">
+        @for (int i = 0; i < Model.Cards.Length; i++)
+        {
+            <div class="card" style="width: 4rem;">
+                <img class="card-img-top" src="@Model.Cards[i].Images.Png" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">@Model.Cards[i].Code</h5>
+                    <p class="card-text">@Model.Cards[i].Value of @Model.Cards[i].Suit</p>
+                </div>
+            </div>
+        }
+    </div>
+</div>

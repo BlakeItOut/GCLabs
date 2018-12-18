@@ -27,7 +27,8 @@ namespace Capstone6.Migrations
 
                     b.Property<bool>("Complete");
 
-                    b.Property<string>("Description");
+                    b.Property<string>("Description")
+                        .IsRequired();
 
                     b.Property<DateTime>("DueDate");
 
@@ -36,6 +37,23 @@ namespace Capstone6.Migrations
                     b.HasKey("TaskID");
 
                     b.ToTable("Todo");
+                });
+
+            modelBuilder.Entity("Capstone6.Models.User", b =>
+                {
+                    b.Property<int>("UserId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Email")
+                        .IsRequired();
+
+                    b.Property<string>("Password")
+                        .IsRequired();
+
+                    b.HasKey("UserId");
+
+                    b.ToTable("User");
                 });
 #pragma warning restore 612, 618
         }

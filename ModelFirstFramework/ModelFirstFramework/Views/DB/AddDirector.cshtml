@@ -1,0 +1,13 @@
+﻿@model ModelFirstFramework.Models.Movie
+@{
+    ViewBag.Title = "AddDirector";
+}
+
+<h2>AddDirector</h2>
+
+<form action="~/DB/SaveAddDirector" method="post">
+    <input type="hidden" name="MovieID" value="@Model.MovieID"/>
+    <input type="text" name="Director.FirstName" placeholder="Director First Name" />
+    <input type="text" name="Director.LastName" placeholder="Director Last Name" />
+    <input type="submit" value="Submit">
+</form>

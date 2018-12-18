@@ -1,0 +1,27 @@
+{
+  "remaining": 50,
+  "cards": [
+    {
+      "suit": "SPADES",
+      "value": "4",
+      "code": "4S",
+      "images": {
+        "svg": "https://deckofcardsapi.com/static/img/4S.svg",
+        "png": "https://deckofcardsapi.com/static/img/4S.png"
+      },
+      "image": "https://deckofcardsapi.com/static/img/4S.png"
+    },
+    {
+      "suit": "SPADES",
+      "value": "QUEEN",
+      "code": "QS",
+      "images": {
+        "svg": "https://deckofcardsapi.com/static/img/QS.svg",
+        "png": "https://deckofcardsapi.com/static/img/QS.png"
+      },
+      "image": "https://deckofcardsapi.com/static/img/QS.png"
+    }
+  ],
+  "success": true,
+  "deck_id": "z1faqg974z3e"
+}
