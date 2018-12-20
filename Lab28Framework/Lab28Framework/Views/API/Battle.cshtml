@@ -4,7 +4,31 @@
 }
 
 <h2>Battle</h2>
-Player 1 wins: @TempData["player1wins"] Ties: @TempData["ties"] Player 2 wins: @TempData["player2wins"]
+<table class="table text-center">
+    <tr>
+        <th>
+            Player 1 Wins
+        </th>
+        <th>
+            Ties
+        </th>
+        <th>
+            Player 2 Wins
+        </th>
+    </tr>
+    <tr>
+        <td>
+            @TempData["player1wins"]
+        </td>
+        <td>
+            @TempData["ties"]
+        </td>
+        <td>
+            @TempData["player2wins"]
+        </td>
+    </tr>
+</table>
+
 <div class="jumbotron">
     <div class="card-deck">
         @for (int i = 0; i < Model.Cards.Length; i++)

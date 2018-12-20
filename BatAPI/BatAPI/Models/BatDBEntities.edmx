@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BatFriendsDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Bats">
+          <Key>
+            <PropertyRef Name="BatId" />
+          </Key>
+          <Property Name="BatId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Age" Type="tinyint" />
+          <Property Name="IsAlive" Type="bit" Nullable="false" />
+          <Property Name="SpeciesId" Type="int" />
+          <Property Name="LocationId" Type="int" />
+        </EntityType>
+        <EntityType Name="Species">
+          <Key>
+            <PropertyRef Name="SpeciesId" />
+          </Key>
+          <Property Name="SpeciesId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CommonName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="SpeciesName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Genus" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Family" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="FunFact" Type="nvarchar(max)" />
+          <Property Name="PicURL" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <Association Name="FK_Bats_Species">
+          <End Role="Species" Type="Self.Species" Multiplicity="0..1" />
+          <End Role="Bats" Type="Self.Bats" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Species">
+              <PropertyRef Name="SpeciesId" />
+            </Principal>
+            <Dependent Role="Bats">
+              <PropertyRef Name="SpeciesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BatFriendsDBModelStoreContainer">
+          <EntitySet Name="Bats" EntityType="Self.Bats" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Species" EntityType="Self.Species" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Bats_Species" Association="Self.FK_Bats_Species">
+            <End Role="Species" EntitySet="Species" />
+            <End Role="Bats" EntitySet="Bats" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BatFriendsDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Bat">
+          <Key>
+            <PropertyRef Name="BatId" />
+          </Key>
+          <Property Name="BatId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Age" Type="Byte" />
+          <Property Name="IsAlive" Type="Boolean" Nullable="false" />
+          <Property Name="SpeciesId" Type="Int32" />
+          <Property Name="LocationId" Type="Int32" />
+          <NavigationProperty Name="Species" Relationship="Self.FK_Bats_Species" FromRole="Bats" ToRole="Species" />
+        </EntityType>
+        <EntityType Name="Species">
+          <Key>
+            <PropertyRef Name="SpeciesId" />
+          </Key>
+          <Property Name="SpeciesId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CommonName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SpeciesName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Genus" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Family" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FunFact" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PicURL" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Bats" Relationship="Self.FK_Bats_Species" FromRole="Species" ToRole="Bats" />
+        </EntityType>
+        <Association Name="FK_Bats_Species">
+          <End Role="Species" Type="Self.Species" Multiplicity="0..1" />
+          <End Role="Bats" Type="Self.Bat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Species">
+              <PropertyRef Name="SpeciesId" />
+            </Principal>
+            <Dependent Role="Bats">
+              <PropertyRef Name="SpeciesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BatFriendsDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Bats" EntityType="Self.Bat" />
+          <EntitySet Name="Species" EntityType="Self.Species" />
+          <AssociationSet Name="FK_Bats_Species" Association="Self.FK_Bats_Species">
+            <End Role="Species" EntitySet="Species" />
+            <End Role="Bats" EntitySet="Bats" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BatFriendsDBModelStoreContainer" CdmEntityContainer="BatFriendsDBEntities">
+          <EntitySetMapping Name="Bats">
+            <EntityTypeMapping TypeName="BatFriendsDBModel.Bat">
+              <MappingFragment StoreEntitySet="Bats">
+                <ScalarProperty Name="BatId" ColumnName="BatId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="IsAlive" ColumnName="IsAlive" />
+                <ScalarProperty Name="SpeciesId" ColumnName="SpeciesId" />
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Species">
+            <EntityTypeMapping TypeName="BatFriendsDBModel.Species">
+              <MappingFragment StoreEntitySet="Species">
+                <ScalarProperty Name="SpeciesId" ColumnName="SpeciesId" />
+                <ScalarProperty Name="CommonName" ColumnName="CommonName" />
+                <ScalarProperty Name="SpeciesName" ColumnName="SpeciesName" />
+                <ScalarProperty Name="Genus" ColumnName="Genus" />
+                <ScalarProperty Name="Family" ColumnName="Family" />
+                <ScalarProperty Name="FunFact" ColumnName="FunFact" />
+                <ScalarProperty Name="PicURL" ColumnName="PicURL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

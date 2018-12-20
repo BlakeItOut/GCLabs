@@ -57,11 +57,18 @@ namespace Lab28Framework.Controllers
         {
             var draw = new Draw();
 
-            if (!TempData.ContainsKey("deckId"))
+            if (!TempData.ContainsKey("player1wins"))
             {
-                TempData.Add("deckId", "new");
                 TempData.Add("player1wins", 0);
+            }
+
+            if (!TempData.ContainsKey("ties"))
+            {
                 TempData.Add("ties", 0);
+            }
+
+            if (!TempData.ContainsKey("player2wins"))
+            {
                 TempData.Add("player2wins", 0);
             }
 
